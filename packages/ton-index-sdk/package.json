@@ -1,0 +1,66 @@
+{
+  "name": "@ton.js/ton-index-sdk",
+  "version": "0.0.0",
+  "description": "TON Index SDK for Node.js and Web",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "test": ":",
+    "build": "run-s clean build:types build:esbuild",
+    "clean": "rm -rf ./dist",
+    "build:esbuild": "ts-node ./esbuild.ts",
+    "build:types": "run-s build:types:compile build:types:extract",
+    "build:types:compile": "tsc -p ./tsconfig.lib.json",
+    "build:types:extract": "api-extractor run --local --verbose",
+    "docs:generate": "rimraf ./docs && api-documenter markdown -i ./temp/ -o ./docs/",
+    "docs:upload": "gh-pages -d ./docs",
+    "docs:publish": "run-s docs:generate docs:upload",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "sdk",
+    "the-open-network",
+    "ton",
+    "ton-index",
+    "ton.js"
+  ],
+  "homepage": "https://github.com/ton-js/ton-index-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/ton-js/ton-index-sdk/issues"
+  },
+  "author": {
+    "name": "Slava Fomin II",
+    "email": "slava@fomin.io",
+    "url": "https://github.com/slavafomin"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "peerDependencies": {
+    "bn.js": "^5.2.1"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.19.26",
+    "@microsoft/api-extractor": "^7.33.7",
+    "@types/bn.js": "^5.1.1",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^14.18.35",
+    "@types/to-snake-case": "^1.0.0",
+    "bn.js": "^5.2.1",
+    "esbuild": "^0.16.8",
+    "esbuild-node-externals": "^1.6.0",
+    "http-server": "^14.1.1",
+    "npm-run-all": "^4.1.5",
+    "to-snake-case": "^1.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
