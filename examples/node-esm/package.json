@@ -1,0 +1,45 @@
+{
+  "name": "examples-node",
+  "version": "0.0.0",
+  "description": "Node.js examples",
+  "type": "module",
+  "scripts": {
+    "build": "run-s clean build:compile",
+    "build:compile": "tsc -p tsconfig.app.json",
+    "clean": "rimraf ./dist/",
+    "__misc__": ":",
+    "use-api-key": "ts-node src/use-api-key.ts",
+    "use-testnet": "ts-node src/use-testnet.ts",
+    "__methods__": ":",
+    "get-active-accounts-count-in-period": "ts-node src/methods/get-active-accounts-count-in-period.ts",
+    "get-block-by-transaction": "ts-node src/methods/get-block-by-transaction.ts",
+    "get-blocks-by-unix-time": "ts-node src/methods/get-blocks-by-unix-time.ts",
+    "get-chain-last-transactions": "ts-node src/methods/get-chain-last-transactions.ts",
+    "get-destination-transaction-by-message": "ts-node src/methods/get-destination-transaction-by-message.ts",
+    "get-in-message-by-tx-id": "ts-node src/methods/get-in-message-by-tx-id.ts",
+    "get-messages-by-hash": "ts-node src/methods/get-messages-by-hash.ts",
+    "get-out-messages-by-tx-id": "ts-node src/methods/get-out-messages-by-tx-id.ts",
+    "get-source-transaction-by-message": "ts-node src/methods/get-source-transaction-by-message.ts",
+    "get-transaction-by-hash": "ts-node src/methods/get-transaction-by-hash.ts",
+    "get-transaction-by-in-message-hash": "ts-node src/methods/get-transaction-by-in-message-hash.ts",
+    "get-transactions-by-address": "ts-node src/methods/get-transactions-by-address.ts",
+    "get-transactions-by-masterchain-seqno": "ts-node src/methods/get-transactions-by-masterchain-seqno.ts",
+    "get-transactions-in-block": "ts-node src/methods/get-transactions-in-block.ts",
+    "lookup-masterchain-block": "ts-node src/methods/lookup-masterchain-block.ts"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "@types/node": "^14.18.35",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "@ton.js/ton-index-sdk": "workspace:*",
+    "bn.js": "^5.2.1",
+    "node-fetch": "^3.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
