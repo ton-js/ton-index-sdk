@@ -1,0 +1,75 @@
+{
+    "inputs": {
+        "../../node_modules/.pnpm/bn.js@5.2.1/node_modules/bn.js/lib/bn.js": {
+            "bytes": 90429,
+            "imports": [
+                {
+                    "path": "buffer",
+                    "kind": "require-call",
+                    "external": true
+                }
+            ]
+        },
+        "../../packages/ton-index-sdk/dist/index.mjs": {
+            "bytes": 24199,
+            "imports": [
+                {
+                    "path": "../../node_modules/.pnpm/bn.js@5.2.1/node_modules/bn.js/lib/bn.js",
+                    "kind": "import-statement"
+                },
+                {
+                    "path": "../../node_modules/.pnpm/bn.js@5.2.1/node_modules/bn.js/lib/bn.js",
+                    "kind": "import-statement"
+                },
+                {
+                    "path": "../../node_modules/.pnpm/bn.js@5.2.1/node_modules/bn.js/lib/bn.js",
+                    "kind": "import-statement"
+                },
+                {
+                    "path": "../../node_modules/.pnpm/bn.js@5.2.1/node_modules/bn.js/lib/bn.js",
+                    "kind": "import-statement"
+                }
+            ]
+        },
+        "src/index.ts": {
+            "bytes": 786,
+            "imports": [
+                {
+                    "path": "../../packages/ton-index-sdk/dist/index.mjs",
+                    "kind": "import-statement"
+                }
+            ]
+        }
+    },
+    "outputs": {
+        "dist/index.mjs.map": {
+            "imports": [],
+            "exports": [],
+            "inputs": {},
+            "bytes": 237170
+        },
+        "dist/index.mjs": {
+            "imports": [
+                {
+                    "path": "buffer",
+                    "kind": "require-call",
+                    "external": true
+                }
+            ],
+            "exports": [],
+            "entryPoint": "src/index.ts",
+            "inputs": {
+                "../../node_modules/.pnpm/bn.js@5.2.1/node_modules/bn.js/lib/bn.js": {
+                    "bytesInOutput": 44319
+                },
+                "../../packages/ton-index-sdk/dist/index.mjs": {
+                    "bytesInOutput": 9920
+                },
+                "src/index.ts": {
+                    "bytesInOutput": 366
+                }
+            },
+            "bytes": 55433
+        }
+    }
+}

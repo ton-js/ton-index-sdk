@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@tsconfig/node-lts-strictest-esm/tsconfig.json",
+  "compilerOptions": {
+    "noUnusedParameters": false,
+    "noUnusedLocals": false
+  },
+  "files": [
+    "esbuild.ts"
+  ],
+  "ts-node": {
+    "esm": true
+  }
+}
