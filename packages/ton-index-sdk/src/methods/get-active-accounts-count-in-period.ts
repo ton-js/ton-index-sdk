@@ -48,6 +48,9 @@ export namespace GetActiveAccountsCountInPeriod {
 
 }
 
+/**
+ * Gets active accounts count in the specified time period.
+ */
 export function getActiveAccountsCountInPeriod(
   options: ApiMethodArgs<GetActiveAccountsCountInPeriod.Params>
 

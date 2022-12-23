@@ -44,6 +44,9 @@ export namespace LookupMasterchainBlock {
 
 }
 
+/**
+ * Gets corresponding masterchain block by a shardchain one.
+ */
 export function lookupMasterchainBlock(
   options: ApiMethodArgs<LookupMasterchainBlock.Params>
 

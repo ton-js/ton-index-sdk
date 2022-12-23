@@ -6,6 +6,9 @@ import { MaybeBN, maybeBN } from '../common/bn.js';
 import { Message, MessageResponse } from './message.js';
 
 
+/**
+ * @internal
+ */
 export interface TransactionResponse {
 
   /**

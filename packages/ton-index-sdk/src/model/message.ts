@@ -4,6 +4,9 @@ import BN from 'bn.js';
 import type { Maybe } from '../types/maybe.js';
 
 
+/**
+ * @internal
+ */
 export interface MessageResponse {
 
   /**

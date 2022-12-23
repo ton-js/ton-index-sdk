@@ -14,7 +14,7 @@ export namespace GetTransactionsByInMessageHash {
   export interface Params extends RequestParams {
 
     /**
-     * Incoming message hash.
+     * Incoming message hash (in HEX or Base64 format).
      */
     msgHash: string;
 
@@ -46,6 +46,9 @@ export namespace GetTransactionsByInMessageHash {
 
 }
 
+/**
+ * Gets transactions by the specified incoming message hash.
+ */
 export function getTransactionsByInMessageHash(
   options: ApiMethodArgs<GetTransactionsByInMessageHash.Params>
 

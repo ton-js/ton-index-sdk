@@ -18,7 +18,7 @@ export namespace GetInMessageByTxID {
     txLt: number;
 
     /**
-     * Transaction's hash.
+     * Transaction's hash (in HEX or Base64 format).
      */
     txHash: string;
 
@@ -54,6 +54,9 @@ export namespace GetInMessageByTxID {
 
 }
 
+/**
+ * Gets incoming message by the specified transaction.
+ */
 export function getInMessageByTxID(
   options: ApiMethodArgs<GetInMessageByTxID.Params>
 

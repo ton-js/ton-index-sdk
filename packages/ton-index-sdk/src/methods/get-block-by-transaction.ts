@@ -31,6 +31,9 @@ export namespace GetBlockByTransaction {
 
 }
 
+/**
+ * Gets block by the specified transaction.
+ */
 export function getBlockByTransaction(
   options: ApiMethodArgs<GetBlockByTransaction.Params>
 

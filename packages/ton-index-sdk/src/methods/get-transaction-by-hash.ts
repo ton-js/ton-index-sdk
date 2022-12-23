@@ -14,7 +14,7 @@ export namespace GetTransactionByHash {
   export interface Params extends RequestParams {
 
     /**
-     * Transaction's hash.
+     * Transaction's hash (in HEX or Base64 format).
      */
     txHash: string;
 
@@ -67,6 +67,9 @@ export namespace GetTransactionByHash {
 
 }
 
+/**
+ * Gets transaction by the specified hash.
+ */
 export function getTransactionByHash(
   options: ApiMethodArgs<GetTransactionByHash.Params>
 

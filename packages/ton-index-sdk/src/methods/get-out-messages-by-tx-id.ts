@@ -19,7 +19,7 @@ export namespace GetOutMessagesByTxID {
     txLt: number;
 
     /**
-     * Transaction's hash.
+     * Transaction's hash (in HEX or Base64 format).
      */
     txHash: string;
 
@@ -55,6 +55,9 @@ export namespace GetOutMessagesByTxID {
 
 }
 
+/**
+ * Gets outgoing messages for the specified transaction.
+ */
 export function getOutMessagesByTxID(
   options: ApiMethodArgs<GetOutMessagesByTxID.Params>
 

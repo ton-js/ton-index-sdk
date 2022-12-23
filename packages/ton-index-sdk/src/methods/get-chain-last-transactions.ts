@@ -75,6 +75,10 @@ export namespace GetChainLastTransactions {
 
 }
 
+/**
+ * Gets the latest transactions of the specified workchain.
+ * Response is sorted descending by transaction's timestamp.
+ */
 export function getChainLastTransactions(
   options: ApiMethodArgs<GetChainLastTransactions.Params>
 

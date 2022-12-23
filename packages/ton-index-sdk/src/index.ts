@@ -6,8 +6,9 @@
 export { TonIndexClient } from './ton-index-client/ton-index-client.js';
 
 export type {
-  TonIndexClientOptions,
+  EndpointOptions,
   RequestOptions,
+  TonIndexClientOptions,
 
 } from './ton-index-client/ton-index-client.js';
 
@@ -47,7 +48,9 @@ export { HttpValidationError } from './errors/http-validation.error.js';
 //============//
 
 export { Block } from './model/block.js';
+
 export { Message } from './model/message.js';
+
 export { Transaction } from './model/transaction.js';
 
 
@@ -109,6 +112,7 @@ export { lookupMasterchainBlock } from './methods/lookup-masterchain-block.js';
 // MISCELLANEOUS //
 //===============//
 
+export type { Values } from './types/values';
 export type { Maybe } from './types/maybe.js';
 
 export type { WorkchainType } from './common/workchain.js';

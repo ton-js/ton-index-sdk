@@ -81,6 +81,10 @@ export namespace GetBlocksByUnixTime {
 
 }
 
+/**
+ * Gets blockchain blocks according to the various filter
+ * criteria.
+ */
 export function getBlocksByUnixTime(
   options: ApiMethodArgs<GetBlocksByUnixTime.Params>
 

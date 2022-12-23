@@ -2,6 +2,9 @@
 import type { WorkchainType } from '../common/workchain.js';
 
 
+/**
+ * @internal
+ */
 export interface BlockResponse {
 
   workchain: WorkchainType;

@@ -14,7 +14,7 @@ export namespace GetMessagesByHash {
   export interface Params extends RequestParams {
 
     /**
-     * Message hash.
+     * Message hash (in HEX or Base64 format).
      */
     msgHash: string;
 
@@ -50,6 +50,9 @@ export namespace GetMessagesByHash {
 
 }
 
+/**
+ * Gets messages by the specified hash.
+ */
 export function getMessagesByHash(
   options: ApiMethodArgs<GetMessagesByHash.Params>
 

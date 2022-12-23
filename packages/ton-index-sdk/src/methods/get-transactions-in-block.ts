@@ -51,6 +51,9 @@ export namespace GetTransactionsInBlock {
 
 }
 
+/**
+ * Gets transactions of the specified block.
+ */
 export function getTransactionsInBlock(
   options: ApiMethodArgs<GetTransactionsInBlock.Params>
 

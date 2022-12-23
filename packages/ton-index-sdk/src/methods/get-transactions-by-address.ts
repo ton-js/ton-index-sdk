@@ -84,6 +84,9 @@ export namespace GetTransactionsByAddress {
 
 }
 
+/**
+ * Gets transactions for the specified account address.
+ */
 export function getTransactionsByAddress(
   options: ApiMethodArgs<GetTransactionsByAddress.Params>
 

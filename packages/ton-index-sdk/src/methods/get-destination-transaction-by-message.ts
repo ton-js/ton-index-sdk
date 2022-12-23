@@ -42,6 +42,10 @@ export namespace GetDestinationTransactionByMessage {
 
 }
 
+/**
+ * Gets transaction of the destination address by outgoing
+ * message on source address.
+ */
 export function getDestinationTransactionByMessage(
   options: ApiMethodArgs<GetDestinationTransactionByMessage.Params>
 

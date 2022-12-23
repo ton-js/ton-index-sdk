@@ -79,7 +79,7 @@ export namespace GetActiveAccountsCountInPeriod {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getActiveAccountsCountInPeriod(options: ApiMethodArgs<GetActiveAccountsCountInPeriod.Params>): Promise<GetActiveAccountsCountInPeriod.Result>;
 
 // @public (undocumented)
@@ -96,7 +96,7 @@ export namespace GetBlockByTransaction {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getBlockByTransaction(options: ApiMethodArgs<GetBlockByTransaction.Params>): Promise<GetBlockByTransaction.Result>;
 
 // @public (undocumented)
@@ -119,7 +119,7 @@ export namespace GetBlocksByUnixTime {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getBlocksByUnixTime(options: ApiMethodArgs<GetBlocksByUnixTime.Params>): Promise<GetBlocksByUnixTime.Result>;
 
 // @public (undocumented)
@@ -143,7 +143,7 @@ export namespace GetChainLastTransactions {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getChainLastTransactions(options: ApiMethodArgs<GetChainLastTransactions.Params>): Promise<GetChainLastTransactions.Result>;
 
 // @public (undocumented)
@@ -162,7 +162,7 @@ export namespace GetDestinationTransactionByMessage {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getDestinationTransactionByMessage(options: ApiMethodArgs<GetDestinationTransactionByMessage.Params>): Promise<GetDestinationTransactionByMessage.Result>;
 
 // @public (undocumented)
@@ -183,7 +183,7 @@ export namespace GetInMessageByTxID {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getInMessageByTxID(options: ApiMethodArgs<GetInMessageByTxID.Params>): Promise<GetInMessageByTxID.Result>;
 
 // @public (undocumented)
@@ -201,7 +201,7 @@ export namespace GetMessagesByHash {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getMessagesByHash(options: ApiMethodArgs<GetMessagesByHash.Params>): Promise<GetMessagesByHash.Result>;
 
 // @public (undocumented)
@@ -220,7 +220,7 @@ export namespace GetOutMessagesByTxID {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getOutMessagesByTxID(options: ApiMethodArgs<GetOutMessagesByTxID.Params>): Promise<GetOutMessagesByTxID.Result>;
 
 // @public (undocumented)
@@ -239,7 +239,7 @@ export namespace GetSourceTransactionByMessage {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getSourceTransactionByMessage(options: ApiMethodArgs<GetSourceTransactionByMessage.Params>): Promise<GetSourceTransactionByMessage.Result>;
 
 // @public (undocumented)
@@ -257,7 +257,7 @@ export namespace GetTransactionByHash {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getTransactionByHash(options: ApiMethodArgs<GetTransactionByHash.Params>): Promise<GetTransactionByHash.Result>;
 
 // @public (undocumented)
@@ -280,7 +280,7 @@ export namespace GetTransactionsByAddress {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getTransactionsByAddress(options: ApiMethodArgs<GetTransactionsByAddress.Params>): Promise<GetTransactionsByAddress.Result>;
 
 // @public (undocumented)
@@ -298,7 +298,7 @@ export namespace GetTransactionsByInMessageHash {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getTransactionsByInMessageHash(options: ApiMethodArgs<GetTransactionsByInMessageHash.Params>): Promise<GetTransactionsByInMessageHash.Result>;
 
 // @public (undocumented)
@@ -316,7 +316,7 @@ export namespace GetTransactionsByMasterchainSeqno {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getTransactionsByMasterchainSeqno(options: ApiMethodArgs<GetTransactionsByMasterchainSeqno.Params>): Promise<GetTransactionsByMasterchainSeqno.Result>;
 
 // @public (undocumented)
@@ -336,7 +336,7 @@ export namespace GetTransactionsInBlock {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function getTransactionsInBlock(options: ApiMethodArgs<GetTransactionsInBlock.Params>): Promise<GetTransactionsInBlock.Result>;
 
 // @public (undocumented)
@@ -347,8 +347,6 @@ export interface HttpClient {
 
 // @public (undocumented)
 export interface HttpRequest<BodyType = any> {
-    // (undocumented)
-    body?: BodyType;
     // (undocumented)
     headers?: RequestHeaders;
     // (undocumented)
@@ -361,7 +359,7 @@ export interface HttpRequest<BodyType = any> {
 }
 
 // @public (undocumented)
-export type HttpRequestMethod = ('GET' | 'POST');
+export type HttpRequestMethod = ('GET');
 
 // @public (undocumented)
 export interface HttpResponse<PayloadType = any> {
@@ -393,7 +391,7 @@ export namespace LookupMasterchainBlock {
     definition: MethodDefinition<Params, Response, Result>;
 }
 
-// @public (undocumented)
+// @public
 export function lookupMasterchainBlock(options: ApiMethodArgs<LookupMasterchainBlock.Params>): Promise<LookupMasterchainBlock.Result>;
 
 // @public (undocumented)

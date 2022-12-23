@@ -40,6 +40,10 @@ export namespace GetTransactionsByMasterchainSeqno {
 
 }
 
+/**
+ * Gets transactions by masterchain seqno across all
+ * workchains and shardchains.
+ */
 export function getTransactionsByMasterchainSeqno(
   options: ApiMethodArgs<GetTransactionsByMasterchainSeqno.Params>
 
