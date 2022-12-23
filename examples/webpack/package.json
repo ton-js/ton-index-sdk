@@ -1,0 +1,28 @@
+{
+  "name": "examples-webpack",
+  "version": "0.0.0",
+  "description": "Node.js webpack example",
+  "type": "module",
+  "scripts": {
+    "build": "webpack"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^14.18.35",
+    "@types/webpack": "^5.28.0",
+    "babel-loader": "^9.1.0",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "@ton.js/ton-index-sdk": "workspace:*",
+    "bn.js": "^5.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
