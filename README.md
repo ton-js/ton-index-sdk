@@ -21,7 +21,7 @@ Some notorious TON explorers are actually using this API.
 - written in pure super-strict TypeScript with 100% type coverage,
 
 - very small package with zero direct dependencies designed
-  from ground-up to be [tree-shakable](./#tree-shaking),
+  from ground-up to be [tree-shakable](#tree-shaking),
 
 - generated code is manually audited before every release
   to ensure the highest possible level of security,
@@ -55,7 +55,7 @@ Some notorious TON explorers are actually using this API.
 - use the API keys to improve throughput of the publicly
   hosted API,
 
-- [usage examples](./examples) are provided for all popular
+- [usage examples][examples] are provided for all popular
   environments,
 
 - [API documentation][lib-api-docs] is automatically generated
@@ -153,8 +153,8 @@ only get 1 RPS limit, which is too low for almost any application.
 In order to increase the limit to 10 RPS you will need to
 obtain an API key from one of the Telegram bots:
 
-- [@tonapibot](https://t.me/tonapibot) (mainnet)
-- [@tontestnetapibot](https://t.me/tontestnetapibot) (testnet)
+- [@tonapibot][tonapibot] (mainnet)
+- [@tontestnetapibot][tontestnetapibot] (testnet)
 
 Then use the `apiKey` option of the `TonIndexClient`
 constructor to specify the token.
@@ -231,7 +231,7 @@ early as possible in the program's lifecycle.
 
 ## Examples
 
-You can see various library [usage examples](./examples).
+You can see various library [usage examples][examples].
 
 
 ## API documentation
@@ -262,7 +262,7 @@ so it could be quickly patched.
 
 ## Contributing
 
-Want to help? Please see the [contributing guide](./CONTRIBUTING.md).
+Want to help? Please see the [contributing guide][contributing].
 
 
 ## Support
@@ -299,5 +299,9 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
   [index-api]: https://toncenter.com/api/index/
-  [lib-api-docs]: ./docs/modules.html
+  [lib-api-docs]: https://ton-js.github.io/ton-index-sdk/modules.html
   [tondev-chat]: https://t.me/tondev_eng
+  [examples]: ./examples
+  [contributing]: ./CONTRIBUTING.md
+  [tonapibot]: https://t.me/tonapibot
+  [tontestnetapibot]: https://t.me/tontestnetapibot
