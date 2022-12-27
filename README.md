@@ -1,14 +1,9 @@
 
-<img alt="Type definitions" src="https://img.shields.io/npm/types/@ton.js/ton-index-sdk">
-<img alt="License" src="https://img.shields.io/github/license/ton-js/ton-index-sdk">
+<img alt="Type definitions" src="https://img.shields.io/npm/types/@ton.js/ton-index-sdk"> <img alt="License" src="https://img.shields.io/github/license/ton-js/ton-index-sdk">
 <br>
-<img alt="npm (scoped with tag)" src="https://img.shields.io/npm/v/@ton.js/ton-index-sdk/beta">
-<img alt="node-lts (scoped with tag)" src="https://img.shields.io/node/v-lts/@ton.js/ton-index-sdk/beta">
-<img alt="npm bundle size (scoped)" src="https://img.shields.io/bundlephobia/min/@ton.js/ton-index-sdk">
+<img alt="npm (scoped with tag)" src="https://img.shields.io/npm/v/@ton.js/ton-index-sdk/beta"> <img alt="node-lts (scoped with tag)" src="https://img.shields.io/node/v-lts/@ton.js/ton-index-sdk/beta"> <img alt="npm bundle size (scoped)" src="https://img.shields.io/bundlephobia/min/@ton.js/ton-index-sdk">
 <br>
-<img alt="GitHub issues" src="https://img.shields.io/github/issues/ton-js/ton-index-sdk">
-<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/ton-js/ton-index-sdk">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ton-js/ton-index-sdk">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/ton-js/ton-index-sdk"> <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/ton-js/ton-index-sdk"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ton-js/ton-index-sdk">
 <hr>
 
 # @ton.js/ton-index-sdk
