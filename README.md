@@ -73,7 +73,7 @@ npm install --save @ton.js/ton-index-sdk
 
 ### TypeScript / ESM
 
-```typescript
+```ts
 import {
   TonIndexClient,
   FetchHttpClient,
@@ -178,7 +178,7 @@ We would recommend to use `node-fetch`:
 
 ### ESM
 
-```typescript
+```ts
 import fetch, { Headers } from 'node-fetch';
 
 /**
@@ -201,7 +201,7 @@ if (
 
 ### CommonJS
 
-```typescript
+```ts
 /**
  * Starting from ver. 17 Node.js supports Fetch API
  * natively, we don't want to overwrite it therefore
