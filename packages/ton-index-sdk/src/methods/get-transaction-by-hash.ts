@@ -2,7 +2,7 @@
 import type { TransactionResponse } from '../model/transaction.js';
 import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { RequestParams } from '../common/request-params.js';
+import type { RequestParams } from '../ton-index-client/request-params';
 import type { Transaction } from '../model/transaction.js';
 import type { ExtraRequestOptions } from './common/make-request';
 import { makeRequest } from './common/make-request';

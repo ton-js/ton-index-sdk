@@ -1,5 +1,5 @@
 
-import type { RequestParams } from '../common/request-params.js';
+import type { RequestParams } from '../ton-index-client/request-params';
 import type { BlockResponse } from '../model/block.js';
 import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe';

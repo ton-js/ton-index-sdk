@@ -1,7 +1,7 @@
 
 import type { AnyTime } from '../common/timestamp.js';
 import type { TransactionResponse } from '../model/transaction.js';
-import type { RequestParams } from '../common/request-params.js';
+import type { RequestParams } from '../ton-index-client/request-params';
 import type { WorkchainType } from '../common/workchain.js';
 import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';

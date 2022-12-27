@@ -104,27 +104,25 @@ console.log(`The latest block is:`);
 
 // 3. Call individual functions to get
 //    data entities from the API.
-const blocks = await getBlocksByUnixTime({
-  client,
-  params: {
+const blocks = await getBlocksByUnixTime(
+  client, {
     workchain: Workchain.Basic,
     limit: 1,
     sort: SortDirection.DESC,
   },
-});
+);
 
 const block = blocks[0];
 
 console.log(`${block.seqno} ${block.genUtime.toISOString()}`);
 
-const transactions = await getTransactionsInBlock({
-  client,
-  params: {
+const transactions = await getTransactionsInBlock(
+  client, {
     workchain: block.workchain,
     shard: block.shard,
     seqno: block.seqno,
   },
-});
+);
 
 console.log(
   `Number of transactions in the latest block: ` +
@@ -231,6 +229,16 @@ put the above code somewhere where it will be executed as
 early as possible in the program's lifecycle.
 
 
+## Examples
+
+You can see various library [usage examples](./examples).
+
+
+## API documentation
+
+Please see the [API documentation][lib-api-docs].
+
+
 ## Tree shaking
 
 Tree shaking (a.k.a. dead code elimination) is a technique
@@ -243,10 +251,7 @@ only a couple of library functions without fear of downloading
 an entire library to the user's machine.
 
 
-## API documentation
-
-
-## Vulnerability reports
+## Vulnerability reporting
 
 DO NOT PUBLISH VULNERABILITY INFORMATION IN THE OPEN SOURCES.
 
@@ -257,10 +262,42 @@ so it could be quickly patched.
 
 ## Contributing
 
+Want to help? Please see the [contributing guide](./CONTRIBUTING.md).
+
+
 ## Support
 
-## License
+If you have any questions regarding this library or
+TON development in general — feel free to join our official
+[TON development][tondev-chat] Telegram group.
+
+
+## The MIT License (MIT)
+
+Copyright © 2022 TON FOUNDATION
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the “Software”), to deal in the Software without
+restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons
+to whom the Software is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall
+be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
   [index-api]: https://toncenter.com/api/index/
-  [lib-api-docs]: https://example.com
+  [lib-api-docs]: ./docs/modules.html
+  [tondev-chat]: https://t.me/tondev_eng

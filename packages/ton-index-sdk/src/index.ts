@@ -12,6 +12,8 @@ export type {
 
 } from './ton-index-client/ton-index-client.js';
 
+export type { RequestParams } from './ton-index-client/request-params';
+
 
 //=============//
 // HTTP CLIENT //
@@ -123,3 +125,7 @@ export type { NetworkType } from './common/network.js';
 export { Network } from './common/network.js';
 
 export { apiEndpoints } from './common/api-endpoints.js';
+
+export type { MaybeBigInt } from './common/bigint';
+
+export type { ExtraRequestOptions } from './methods/common/make-request';

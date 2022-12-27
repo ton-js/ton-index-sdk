@@ -1,5 +1,5 @@
 
-import { snakeCase } from './snake-case.js';
+import { snakeCase } from '../common/snake-case';
 
 
 export type RequestParams = Record<string, any>;

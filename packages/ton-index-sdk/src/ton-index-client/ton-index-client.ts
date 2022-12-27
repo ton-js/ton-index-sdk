@@ -9,7 +9,7 @@ import { Network } from '../common/network.js';
 import { OptionsError } from '../errors/options-error.error.js';
 import { HttpValidationError } from '../errors/http-validation.error.js';
 import { normalizeBaseUrl } from '../common/normalize-base-url.js';
-import { prepareRequestQuery, RequestParams } from '../common/request-params.js';
+import { prepareRequestQuery, RequestParams } from './request-params';
 import { userAgent } from './user-agent.js';
 
 
