@@ -17,7 +17,7 @@
     "build:types": "run-s build:types:compile build:types:extract",
     "build:types:compile": "tsc -p ./tsconfig.lib.json",
     "build:types:extract": "api-extractor run --local --verbose",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc --darkHighlightTheme dark-plus"
   },
   "keywords": [
     "cryptocurrency",
