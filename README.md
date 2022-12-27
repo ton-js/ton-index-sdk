@@ -29,8 +29,7 @@ Some notorious TON explorers are actually using this API.
 - very small package with zero direct dependencies designed
   from ground-up to be [tree-shakable](#tree-shaking),
 
-- generated code is manually audited before every release
-  to ensure the highest possible level of security,
+- top-notch [security practices][security-policy],
 
 - all API methods with all related data types are implemented
   and thoroughly tested out,
@@ -257,13 +256,9 @@ only a couple of library functions without fear of downloading
 an entire library to the user's machine.
 
 
-## Vulnerability reporting
+## Security and vulnerability reporting
 
-DO NOT PUBLISH VULNERABILITY INFORMATION IN THE OPEN SOURCES.
-
-If you have found a vulnerability in the library, please
-write to the [slava@fomin.io](mailto:slava@fomin.io) directly,
-so it could be quickly patched.
+Please see our [security policy][security-policy].
 
 
 ## Contributing
@@ -311,3 +306,4 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   [contributing]: https://github.com/ton-js/ton-index-sdk/blob/main/CONTRIBUTING.md
   [tonapibot]: https://t.me/tonapibot
   [tontestnetapibot]: https://t.me/tontestnetapibot
+  [security-policy]: https://github.com/ton-js/ton-index-sdk/security/policy
