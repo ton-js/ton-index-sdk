@@ -28,6 +28,15 @@ mv "${PACKAGE_PATH}/~package.json" "${MANIFEST_PATH}"
 echo "Copying README file…"
 cp "${ROOT_PATH}/README.md" "${PACKAGE_PATH}/"
 
+echo "Building the package…"
+(cd "${PACKAGE_PATH}" && npm run build)
+
+# Making sure Git is "clean"
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Git repository content was updated, please commit all the changes and start again"
+  exit 1 || return 1
+fi
+
 echo "Publishing the package…"
 (cd "${PACKAGE_PATH}" && npm publish --tag "${TAG}")
 

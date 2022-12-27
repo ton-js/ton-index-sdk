@@ -1,3 +1,4 @@
 
 # This file is automatically copied from the monorepo root
 /README.md
+!/dist/

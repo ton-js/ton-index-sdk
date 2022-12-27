@@ -301,7 +301,7 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   [index-api]: https://toncenter.com/api/index/
   [lib-api-docs]: https://ton-js.github.io/ton-index-sdk/modules.html
   [tondev-chat]: https://t.me/tondev_eng
-  [examples]: ./examples
-  [contributing]: ./CONTRIBUTING.md
+  [examples]: https://github.com/ton-js/ton-index-sdk/tree/main/examples
+  [contributing]: https://github.com/ton-js/ton-index-sdk/blob/main/CONTRIBUTING.md
   [tonapibot]: https://t.me/tonapibot
   [tontestnetapibot]: https://t.me/tontestnetapibot

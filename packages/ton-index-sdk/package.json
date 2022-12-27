@@ -1,6 +1,6 @@
 {
   "name": "@ton.js/ton-index-sdk",
-  "version": "0.0.0-beta.0",
+  "version": "0.0.0-beta.3",
   "description": "TON Index SDK for Node.js and Web",
   "type": "module",
   "main": "./dist/index.mjs",
@@ -17,8 +17,7 @@
     "build:types": "run-s build:types:compile build:types:extract",
     "build:types:compile": "tsc -p ./tsconfig.lib.json",
     "build:types:extract": "api-extractor run --local --verbose",
-    "typedoc": "typedoc",
-    "prepublishOnly": "npm run build"
+    "typedoc": "typedoc"
   },
   "keywords": [
     "cryptocurrency",
