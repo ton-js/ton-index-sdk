@@ -1,8 +1,14 @@
 {
   "name": "root",
   "version": "0.0.0",
+  "scripts": {
+    "upload-docs": "gh-pages -d ./docs"
+  },
   "dependencies": {
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "@tsconfig/node-lts-strictest-esm": "^18.12.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
