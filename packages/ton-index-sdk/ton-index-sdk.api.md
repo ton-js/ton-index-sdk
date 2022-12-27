@@ -42,6 +42,11 @@ export type EndpointOptions = ({
 });
 
 // @public (undocumented)
+export interface ExtraRequestOptions {
+    timeout?: number;
+}
+
+// @public (undocumented)
 export class FetchHttpClient implements HttpClient {
     constructor(options?: FetchHttpClientOptions);
     // (undocumented)
@@ -55,8 +60,6 @@ export interface FetchHttpClientOptions {
 
 // @public (undocumented)
 export namespace GetActiveAccountsCountInPeriod {
-    // Warning: (ae-forgotten-export) The symbol "RequestParams" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     export interface Params extends RequestParams {
         endUtime?: Maybe<AnyTime>;
@@ -74,8 +77,6 @@ export namespace GetActiveAccountsCountInPeriod {
     }
 }
 
-// Warning: (ae-forgotten-export) The symbol "ExtraRequestOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function getActiveAccountsCountInPeriod(client: TonIndexClient, params: GetActiveAccountsCountInPeriod.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetActiveAccountsCountInPeriod.Result>;
 
@@ -367,6 +368,9 @@ export function lookupMasterchainBlock(client: TonIndexClient, params: LookupMas
 export type Maybe<Type> = (Type | undefined);
 
 // @public (undocumented)
+export type MaybeBigInt = Maybe<bigint>;
+
+// @public (undocumented)
 export class Message {
     constructor(response: MessageResponse);
     body?: Maybe<string>;
@@ -407,6 +411,9 @@ export interface RequestOptions {
 }
 
 // @public (undocumented)
+export type RequestParams = Record<string, any>;
+
+// @public (undocumented)
 export const SortDirection: {
     readonly ASC: "asc";
     readonly DESC: "desc";
@@ -440,7 +447,6 @@ export class Transaction {
     computeGasCredit?: MaybeBigInt;
     computeGasFees?: MaybeBigInt;
     computeGasLimit?: MaybeBigInt;
-    // Warning: (ae-forgotten-export) The symbol "MaybeBigInt" needs to be exported by the entry point index.d.ts
     computeGasUsed?: MaybeBigInt;
     computeSkipReason?: Maybe<string>;
     computeVmSteps?: Maybe<number>;

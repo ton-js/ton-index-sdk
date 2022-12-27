@@ -1,6 +1,6 @@
 {
   "name": "@ton.js/ton-index-sdk",
-  "version": "0.0.0",
+  "version": "0.0.0-beta.0",
   "description": "TON Index SDK for Node.js and Web",
   "type": "module",
   "main": "./dist/index.mjs",
@@ -45,6 +45,10 @@
     "dist/",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "beta"
+  },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.33.7",
     "@types/lodash-es": "^4.17.6",
