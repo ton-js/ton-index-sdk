@@ -41,6 +41,10 @@
   "engines": {
     "node": ">=14"
   },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
   "devDependencies": {
     "@microsoft/api-extractor": "^7.33.7",
     "@types/lodash-es": "^4.17.6",
