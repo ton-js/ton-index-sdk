@@ -199,7 +199,7 @@ function prepareRequestQuery(params) {
 }
 
 // src/ton-index-client/user-agent.ts
-var userAgent = "@ton.js/ton-index-sdk/0.0.0-beta.3";
+var userAgent = "@ton.js/ton-index-sdk/0.0.0-beta.4";
 
 // src/ton-index-client/ton-index-client.ts
 var _httpClient, _baseUrl, _apiKey, _debug;
