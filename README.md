@@ -64,7 +64,7 @@ Some notorious TON explorers are actually using this API.
 
 ## Install
 
-```shell
+```sh
 npm install --save @ton.js/ton-index-sdk
 ```
 

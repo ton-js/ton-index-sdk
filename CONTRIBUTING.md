@@ -17,12 +17,12 @@ effectively merged and the work won't be duplicated.
 - Fork and clone the repository,
 
 - Install all dependencies:
-  ```shell
+  ```sh
   pnpm install -r
   ```
 
 - Build all the packages:
-  ```shell
+  ```sh
   pnpm run build -r
   ```
 
