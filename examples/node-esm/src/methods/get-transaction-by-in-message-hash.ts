@@ -8,13 +8,12 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const transactions = await getTransactionsByInMessageHash({
-  client,
-  params: {
+const transactions = await getTransactionsByInMessageHash(
+  client, {
     msgHash: '1fTY/jLi8tMCTGGMS88C35HJsW/l1xGHadD4fnCl124=',
     includeMsgBody: true,
   },
-});
+);
 
 for (const transaction of transactions) {
   console.log(

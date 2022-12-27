@@ -1,12 +1,15 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { TransactionResponse } from '../model/transaction.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
 import type { Transaction } from '../model/transaction.js';
+import type { ExtraRequestOptions } from './common/make-request';
+import { makeRequest } from './common/make-request';
 import { parseTransactionsListResponse } from '../model/transaction.js';
 import { serializeHash } from '../common/hash.js';
+
+import type { GetTransactionsByInMessageHash as NS } from './get-transactions-by-in-message-hash.js';
 
 
 export namespace GetTransactionsByInMessageHash {
@@ -31,32 +34,29 @@ export namespace GetTransactionsByInMessageHash {
 
   export type Result = Transaction[];
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'getTransactionByInMessageHash',
-
-    deserializeResponse: parseTransactionsListResponse,
-
-    serializeParams: params => ({
-      ...params,
-      msgHash: serializeHash(params.msgHash),
-    }),
-
-  };
-
 }
+
 
 /**
  * Gets transactions by the specified incoming message hash.
  */
-export function getTransactionsByInMessageHash(
-  options: ApiMethodArgs<GetTransactionsByInMessageHash.Params>
+export async function getTransactionsByInMessageHash(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetTransactionsByInMessageHash.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetTransactionsByInMessageHash.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getTransactionByInMessageHash',
+    params,
+    deserializeResponse: parseTransactionsListResponse,
+    serializeParams: params => ({
+      ...params,
+      msgHash: serializeHash(params.msgHash),
+    }),
+    options,
+  });
 
 }

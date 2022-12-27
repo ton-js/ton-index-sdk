@@ -4,24 +4,11 @@
 
 ```ts
 
-/// <reference types="node" />
-
-import BN from 'bn.js';
-
-// @public (undocumented)
-export type AnyBN = (number | string | number[] | Uint8Array | Buffer | BN);
-
 // @public (undocumented)
 export type AnyTime = (number | Date);
 
 // @public (undocumented)
 export const apiEndpoints: Record<NetworkType, string>;
-
-// @public (undocumented)
-export interface ApiMethodArgs<ParamsType = any> extends RequestOptions<ParamsType> {
-    // (undocumented)
-    client: TonIndexClient;
-}
 
 // @public (undocumented)
 export class Block {
@@ -45,7 +32,14 @@ export class Block {
     workchain: WorkchainType;
 }
 
-export { BN }
+// @public (undocumented)
+export type EndpointOptions = ({
+    network?: NetworkType;
+    endpoint?: never;
+} | {
+    network?: never;
+    endpoint?: string;
+});
 
 // @public (undocumented)
 export class FetchHttpClient implements HttpClient {
@@ -74,13 +68,16 @@ export namespace GetActiveAccountsCountInPeriod {
         count: number;
     }
     // (undocumented)
-    export type Result = Response;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
+    export interface Result {
+        // (undocumented)
+        count: number;
+    }
 }
 
+// Warning: (ae-forgotten-export) The symbol "ExtraRequestOptions" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function getActiveAccountsCountInPeriod(options: ApiMethodArgs<GetActiveAccountsCountInPeriod.Params>): Promise<GetActiveAccountsCountInPeriod.Result>;
+export function getActiveAccountsCountInPeriod(client: TonIndexClient, params: GetActiveAccountsCountInPeriod.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetActiveAccountsCountInPeriod.Result>;
 
 // @public (undocumented)
 export namespace GetBlockByTransaction {
@@ -92,12 +89,10 @@ export namespace GetBlockByTransaction {
     export type Response = BlockResponse;
     // (undocumented)
     export type Result = Block;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getBlockByTransaction(options: ApiMethodArgs<GetBlockByTransaction.Params>): Promise<GetBlockByTransaction.Result>;
+export function getBlockByTransaction(client: TonIndexClient, params: GetBlockByTransaction.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetBlockByTransaction.Result>;
 
 // @public (undocumented)
 export namespace GetBlocksByUnixTime {
@@ -115,12 +110,10 @@ export namespace GetBlocksByUnixTime {
     export type Response = BlockResponse[];
     // (undocumented)
     export type Result = Block[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getBlocksByUnixTime(options: ApiMethodArgs<GetBlocksByUnixTime.Params>): Promise<GetBlocksByUnixTime.Result>;
+export function getBlocksByUnixTime(client: TonIndexClient, params: GetBlocksByUnixTime.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetBlocksByUnixTime.Result>;
 
 // @public (undocumented)
 export namespace GetChainLastTransactions {
@@ -139,12 +132,10 @@ export namespace GetChainLastTransactions {
     export type Response = TransactionResponse[];
     // (undocumented)
     export type Result = Transaction[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getChainLastTransactions(options: ApiMethodArgs<GetChainLastTransactions.Params>): Promise<GetChainLastTransactions.Result>;
+export function getChainLastTransactions(client: TonIndexClient, params: GetChainLastTransactions.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetChainLastTransactions.Result>;
 
 // @public (undocumented)
 export namespace GetDestinationTransactionByMessage {
@@ -158,12 +149,10 @@ export namespace GetDestinationTransactionByMessage {
     export type Response = TransactionResponse;
     // (undocumented)
     export type Result = Transaction;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getDestinationTransactionByMessage(options: ApiMethodArgs<GetDestinationTransactionByMessage.Params>): Promise<GetDestinationTransactionByMessage.Result>;
+export function getDestinationTransactionByMessage(client: TonIndexClient, params: GetDestinationTransactionByMessage.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetDestinationTransactionByMessage.Result>;
 
 // @public (undocumented)
 export namespace GetInMessageByTxID {
@@ -179,12 +168,10 @@ export namespace GetInMessageByTxID {
     export type Response = MessageResponse;
     // (undocumented)
     export type Result = Message;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getInMessageByTxID(options: ApiMethodArgs<GetInMessageByTxID.Params>): Promise<GetInMessageByTxID.Result>;
+export function getInMessageByTxID(client: TonIndexClient, params: GetInMessageByTxID.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetInMessageByTxID.Result>;
 
 // @public (undocumented)
 export namespace GetMessagesByHash {
@@ -197,12 +184,10 @@ export namespace GetMessagesByHash {
     export type Response = MessageResponse[];
     // (undocumented)
     export type Result = Message[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getMessagesByHash(options: ApiMethodArgs<GetMessagesByHash.Params>): Promise<GetMessagesByHash.Result>;
+export function getMessagesByHash(client: TonIndexClient, params: GetMessagesByHash.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetMessagesByHash.Result>;
 
 // @public (undocumented)
 export namespace GetOutMessagesByTxID {
@@ -216,12 +201,10 @@ export namespace GetOutMessagesByTxID {
     export type Response = MessageResponse[];
     // (undocumented)
     export type Result = Message[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getOutMessagesByTxID(options: ApiMethodArgs<GetOutMessagesByTxID.Params>): Promise<GetOutMessagesByTxID.Result>;
+export function getOutMessagesByTxID(client: TonIndexClient, params: GetOutMessagesByTxID.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetOutMessagesByTxID.Result>;
 
 // @public (undocumented)
 export namespace GetSourceTransactionByMessage {
@@ -235,12 +218,10 @@ export namespace GetSourceTransactionByMessage {
     export type Response = TransactionResponse;
     // (undocumented)
     export type Result = Transaction;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getSourceTransactionByMessage(options: ApiMethodArgs<GetSourceTransactionByMessage.Params>): Promise<GetSourceTransactionByMessage.Result>;
+export function getSourceTransactionByMessage(client: TonIndexClient, params: GetSourceTransactionByMessage.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetSourceTransactionByMessage.Result>;
 
 // @public (undocumented)
 export namespace GetTransactionByHash {
@@ -253,12 +234,10 @@ export namespace GetTransactionByHash {
     export type Response = TransactionResponse[];
     // (undocumented)
     export type Result = Maybe<Transaction>;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getTransactionByHash(options: ApiMethodArgs<GetTransactionByHash.Params>): Promise<GetTransactionByHash.Result>;
+export function getTransactionByHash(client: TonIndexClient, params: GetTransactionByHash.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetTransactionByHash.Result>;
 
 // @public (undocumented)
 export namespace GetTransactionsByAddress {
@@ -276,12 +255,10 @@ export namespace GetTransactionsByAddress {
     export type Response = TransactionResponse[];
     // (undocumented)
     export type Result = Transaction[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getTransactionsByAddress(options: ApiMethodArgs<GetTransactionsByAddress.Params>): Promise<GetTransactionsByAddress.Result>;
+export function getTransactionsByAddress(client: TonIndexClient, params: GetTransactionsByAddress.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetTransactionsByAddress.Result>;
 
 // @public (undocumented)
 export namespace GetTransactionsByInMessageHash {
@@ -294,12 +271,10 @@ export namespace GetTransactionsByInMessageHash {
     export type Response = TransactionResponse[];
     // (undocumented)
     export type Result = Transaction[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getTransactionsByInMessageHash(options: ApiMethodArgs<GetTransactionsByInMessageHash.Params>): Promise<GetTransactionsByInMessageHash.Result>;
+export function getTransactionsByInMessageHash(client: TonIndexClient, params: GetTransactionsByInMessageHash.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetTransactionsByInMessageHash.Result>;
 
 // @public (undocumented)
 export namespace GetTransactionsByMasterchainSeqno {
@@ -312,12 +287,10 @@ export namespace GetTransactionsByMasterchainSeqno {
     export type Response = TransactionResponse[];
     // (undocumented)
     export type Result = Transaction[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getTransactionsByMasterchainSeqno(options: ApiMethodArgs<GetTransactionsByMasterchainSeqno.Params>): Promise<GetTransactionsByMasterchainSeqno.Result>;
+export function getTransactionsByMasterchainSeqno(client: TonIndexClient, params: GetTransactionsByMasterchainSeqno.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetTransactionsByMasterchainSeqno.Result>;
 
 // @public (undocumented)
 export namespace GetTransactionsInBlock {
@@ -332,12 +305,10 @@ export namespace GetTransactionsInBlock {
     export type Response = TransactionResponse[];
     // (undocumented)
     export type Result = Transaction[];
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function getTransactionsInBlock(options: ApiMethodArgs<GetTransactionsInBlock.Params>): Promise<GetTransactionsInBlock.Result>;
+export function getTransactionsInBlock(client: TonIndexClient, params: GetTransactionsInBlock.Params, options?: Maybe<ExtraRequestOptions>): Promise<GetTransactionsInBlock.Result>;
 
 // @public (undocumented)
 export interface HttpClient {
@@ -387,21 +358,13 @@ export namespace LookupMasterchainBlock {
     export type Response = BlockResponse;
     // (undocumented)
     export type Result = Block;
-    const // (undocumented)
-    definition: MethodDefinition<Params, Response, Result>;
 }
 
 // @public
-export function lookupMasterchainBlock(options: ApiMethodArgs<LookupMasterchainBlock.Params>): Promise<LookupMasterchainBlock.Result>;
+export function lookupMasterchainBlock(client: TonIndexClient, params: LookupMasterchainBlock.Params, options?: Maybe<ExtraRequestOptions>): Promise<LookupMasterchainBlock.Result>;
 
 // @public (undocumented)
 export type Maybe<Type> = (Type | undefined);
-
-// @public (undocumented)
-export type MaybeAnyBN = Maybe<AnyBN>;
-
-// @public (undocumented)
-export type MaybeBN = Maybe<BN>;
 
 // @public (undocumented)
 export class Message {
@@ -411,19 +374,12 @@ export class Message {
     comment?: Maybe<string>;
     createdLt: number;
     destination: string;
-    fwdFee: BN;
+    fwdFee: bigint;
     hash: string;
-    ihrFee: BN;
+    ihrFee: bigint;
     op?: Maybe<number>;
     source: string;
-    value: BN;
-}
-
-// @public
-export interface MethodDefinition<ParamType = any, ResponseType = any, ResultType = any> {
-    deserializeResponse: ((response: ResponseType) => ResultType);
-    serializeParams?: ((params: ParamType) => RequestParams);
-    url: string;
+    value: bigint;
 }
 
 // @public (undocumented)
@@ -432,8 +388,6 @@ export const Network: {
     readonly Testnet: "testnet";
 };
 
-// Warning: (ae-forgotten-export) The symbol "Values" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type NetworkType = (Values<typeof Network>);
 
@@ -446,10 +400,10 @@ export type ParsedJson = (null | string | number | boolean | ParsedJson[] | {
 export type RequestHeaders = (Record<string, string | string[]>);
 
 // @public (undocumented)
-export interface RequestOptions<ParamsType = any> {
-    // (undocumented)
-    params: ParamsType;
-    timeout?: number;
+export interface RequestOptions {
+    params: RequestParams;
+    timeout?: Maybe<number>;
+    url: string;
 }
 
 // @public (undocumented)
@@ -465,11 +419,9 @@ export type SortDirectionType = Values<typeof SortDirection>;
 export class TonIndexClient {
     constructor(options: TonIndexClientOptions);
     // (undocumented)
-    request<ResultType>(definition: MethodDefinition, options: RequestOptions): Promise<ResultType>;
+    request<ResultType = any>(options: RequestOptions): Promise<ResultType>;
 }
 
-// Warning: (ae-forgotten-export) The symbol "EndpointOptions" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type TonIndexClientOptions = (EndpointOptions & {
     httpClient: HttpClient;
@@ -482,26 +434,30 @@ export class Transaction {
     constructor(response: TransactionResponse);
     account: string;
     actionResultCode?: Maybe<number>;
-    actionTotalActionFees?: MaybeBN;
-    actionTotalFwdFees?: MaybeBN;
+    actionTotalActionFees?: MaybeBigInt;
+    actionTotalFwdFees?: MaybeBigInt;
     computeExitCode?: Maybe<number>;
-    computeGasCredit?: MaybeBN;
-    computeGasFees?: MaybeBN;
-    computeGasLimit?: MaybeBN;
-    computeGasUsed?: MaybeBN;
+    computeGasCredit?: MaybeBigInt;
+    computeGasFees?: MaybeBigInt;
+    computeGasLimit?: MaybeBigInt;
+    // Warning: (ae-forgotten-export) The symbol "MaybeBigInt" needs to be exported by the entry point index.d.ts
+    computeGasUsed?: MaybeBigInt;
     computeSkipReason?: Maybe<string>;
     computeVmSteps?: Maybe<number>;
-    fee: BN;
+    fee: bigint;
     hash: string;
     // (undocumented)
     inMsg?: Maybe<Message>;
     lt: number;
-    otherFee: BN;
+    otherFee: bigint;
     outMsgs?: Maybe<Message[]>;
-    storageFee: BN;
+    storageFee: bigint;
     transactionType: string;
     utime: Date;
 }
+
+// @public (undocumented)
+export type Values<Type> = Type[keyof Type];
 
 // @public (undocumented)
 export const Workchain: {

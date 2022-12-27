@@ -1,9 +1,12 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { BlockResponse } from '../model/block.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
+import type { Maybe } from '../types/maybe';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { Block } from '../model/block.js';
+
+import type { GetBlockByTransaction as NS } from './get-block-by-transaction.js';
 
 
 export namespace GetBlockByTransaction {
@@ -21,27 +24,24 @@ export namespace GetBlockByTransaction {
 
   export type Result = Block;
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'getBlockByTransaction',
-
-    deserializeResponse: response => new Block(response),
-
-  };
-
 }
 
 /**
  * Gets block by the specified transaction.
  */
-export function getBlockByTransaction(
-  options: ApiMethodArgs<GetBlockByTransaction.Params>
+export async function getBlockByTransaction(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetBlockByTransaction.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetBlockByTransaction.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getBlockByTransaction',
+    params,
+    deserializeResponse: response => new Block(response),
+    options,
+  });
 
 }

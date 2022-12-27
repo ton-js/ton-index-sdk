@@ -2,12 +2,14 @@
 import type { RequestParams } from '../common/request-params.js';
 import type { WorkchainType } from '../common/workchain.js';
 import type { BlockResponse } from '../model/block.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
 import type { SortDirection, SortDirectionType } from '../common/sort.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { Block, parseBlocksListResponse } from '../model/block.js';
 import { AnyTime, maybeNormalizeTimestamp } from '../common/timestamp.js';
+
+import type { GetBlocksByUnixTime as NS } from './get-blocks-by-unix-time.js';
 
 
 export namespace GetBlocksByUnixTime {
@@ -65,34 +67,31 @@ export namespace GetBlocksByUnixTime {
 
   export type Result = Block[];
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'getBlocksByUnixTime',
-
-    serializeParams: params => ({
-      ...params,
-      startUtime: maybeNormalizeTimestamp(params.startUtime),
-      endUtime: maybeNormalizeTimestamp(params.endUtime),
-    }),
-
-    deserializeResponse: parseBlocksListResponse,
-
-  };
-
 }
+
 
 /**
  * Gets blockchain blocks according to the various filter
  * criteria.
  */
-export function getBlocksByUnixTime(
-  options: ApiMethodArgs<GetBlocksByUnixTime.Params>
+export async function getBlocksByUnixTime(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetBlocksByUnixTime.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetBlocksByUnixTime.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getBlocksByUnixTime',
+    params,
+    serializeParams: params => ({
+      ...params,
+      startUtime: maybeNormalizeTimestamp(params.startUtime),
+      endUtime: maybeNormalizeTimestamp(params.endUtime),
+    }),
+    deserializeResponse: parseBlocksListResponse,
+    options,
+  });
 
 }

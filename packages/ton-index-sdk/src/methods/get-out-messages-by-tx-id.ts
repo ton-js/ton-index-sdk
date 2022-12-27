@@ -1,12 +1,14 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { MessageResponse } from '../model/message.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
 import type { Message } from '../model/message.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { parseMessageListResponse } from '../model/message.js';
 import { serializeHash } from '../common/hash.js';
+
+import type { GetOutMessagesByTxID as NS } from './get-out-messages-by-tx-id.js';
 
 
 export namespace GetOutMessagesByTxID {
@@ -36,36 +38,29 @@ export namespace GetOutMessagesByTxID {
 
   export type Result = Message[];
 
-  export const definition: MethodDefinition<
-    Params,
-    Response,
-    Result
-  > = {
-
-    url: 'getOutMessagesByTxID',
-
-    deserializeResponse: parseMessageListResponse,
-
-    serializeParams: params => ({
-      ...params,
-      txHash: serializeHash(params.txHash),
-    }),
-
-  };
-
 }
+
 
 /**
  * Gets outgoing messages for the specified transaction.
  */
-export function getOutMessagesByTxID(
-  options: ApiMethodArgs<GetOutMessagesByTxID.Params>
+export async function getOutMessagesByTxID(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetOutMessagesByTxID.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetOutMessagesByTxID.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getOutMessagesByTxID',
+    params,
+    deserializeResponse: parseMessageListResponse,
+    serializeParams: params => ({
+      ...params,
+      txHash: serializeHash(params.txHash),
+    }),
+    options,
+  });
 
 }

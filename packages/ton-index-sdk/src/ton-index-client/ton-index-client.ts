@@ -1,7 +1,6 @@
 
 import type { NetworkType } from '../common/network.js';
 import type { HttpClient, RequestHeaders } from '../http-client/http-client.js';
-import type { MethodDefinition } from '../methods/common/method-definition.js';
 import type { HttpValidationErrorResponse } from '../model/http-validation-error.js';
 import type { Maybe } from '../types/maybe.js';
 import { RateLimitError } from '../errors/rate-limit.error.js';
@@ -10,7 +9,7 @@ import { Network } from '../common/network.js';
 import { OptionsError } from '../errors/options-error.error.js';
 import { HttpValidationError } from '../errors/http-validation.error.js';
 import { normalizeBaseUrl } from '../common/normalize-base-url.js';
-import { prepareRequestQuery } from '../common/request-params.js';
+import { prepareRequestQuery, RequestParams } from '../common/request-params.js';
 import { userAgent } from './user-agent.js';
 
 
@@ -28,14 +27,22 @@ export type EndpointOptions = ({
   endpoint?: string;
 });
 
-export interface RequestOptions <ParamsType = any> {
+export interface RequestOptions {
 
-  params: ParamsType;
+  /**
+   * Method's URL.
+   */
+  url: string;
+
+  /**
+   * Request parameters.
+   */
+  params: RequestParams;
 
   /**
    * Request timeout in milliseconds.
    */
-  timeout?: number;
+  timeout?: Maybe<number>;
 
 }
 
@@ -65,22 +72,19 @@ export class TonIndexClient {
 
   }
 
-  public async request<ResultType>(
-    definition: MethodDefinition,
+  public async request<
+    ResultType = any
+  >(
     options: RequestOptions
 
   ): Promise<ResultType> {
 
-    const url = (new URL(definition.url, this.#baseUrl)
+    const url = (new URL(options.url, this.#baseUrl)
       .toString()
     );
 
-    // Casting all parameter keys to a snake case
-    const query = prepareRequestQuery(
-      definition.serializeParams
-        ? definition.serializeParams(options.params)
-        : options.params
-    );
+    // Casting all parameter keys to the snake case
+    const query = prepareRequestQuery(options.params);
 
     const headers: RequestHeaders = {
 
@@ -107,13 +111,15 @@ export class TonIndexClient {
       );
     }
 
-    const response = await this.#httpClient.sendRequest({
-      url,
-      method: 'GET',
-      query,
-      headers,
-      timeout: options.timeout,
-    });
+    const response = (await this.#httpClient
+      .sendRequest<ResultType>({
+        url,
+        method: 'GET',
+        query,
+        headers,
+        timeout: options.timeout,
+      })
+    );
 
     switch (response.status) {
       case 200: {
@@ -134,9 +140,7 @@ export class TonIndexClient {
       }
     }
 
-    return definition.deserializeResponse(
-      response.payload
-    );
+    return response.payload;
 
   }
 

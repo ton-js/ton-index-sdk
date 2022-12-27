@@ -1,11 +1,13 @@
 
 import type { TransactionResponse } from '../model/transaction.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
 import type { RequestParams } from '../common/request-params.js';
 import type { WorkchainType } from '../common/workchain.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { parseTransactionsListResponse, Transaction } from '../model/transaction.js';
+
+import type { GetTransactionsInBlock as NS } from './get-transactions-in-block.js';
 
 
 export namespace GetTransactionsInBlock {
@@ -41,27 +43,25 @@ export namespace GetTransactionsInBlock {
 
   export type Result = Transaction[];
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'getTransactionsInBlock',
-
-    deserializeResponse: parseTransactionsListResponse,
-
-  };
-
 }
+
 
 /**
  * Gets transactions of the specified block.
  */
-export function getTransactionsInBlock(
-  options: ApiMethodArgs<GetTransactionsInBlock.Params>
+export async function getTransactionsInBlock(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetTransactionsInBlock.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetTransactionsInBlock.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getTransactionsInBlock',
+    params,
+    deserializeResponse: parseTransactionsListResponse,
+    options,
+  });
 
 }

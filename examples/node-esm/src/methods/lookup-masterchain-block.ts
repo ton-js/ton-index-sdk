@@ -13,13 +13,12 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const block = await lookupMasterchainBlock({
-  client,
-  params: {
+const block = await lookupMasterchainBlock(
+  client, {
     workchain: Workchain.Basic,
-    shard: '-92233720368547758081',
-    seqno: 31160690,
+    shard: '-9223372036854775808',
+    seqno: 31616420,
   },
-});
+);
 
 console.log(`${block.seqno} ${block.genUtime.toISOString()}`);

@@ -16,12 +16,11 @@ const client = new TonIndexClient({
   network: Network.Testnet,
 });
 
-const transaction = await getTransactionByHash({
-  client,
-  params: {
+const transaction = await getTransactionByHash(
+  client, {
     txHash: '6EC03A0972F7FFD93AC2B7E8C4482E01018501D0864EAEEECE99D5D86E72105F',
   },
-});
+);
 
 assert(transaction);
 

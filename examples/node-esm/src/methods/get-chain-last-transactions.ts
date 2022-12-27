@@ -13,15 +13,14 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const transactions = await getChainLastTransactions({
-  client,
-  params: {
+const transactions = await getChainLastTransactions(
+  client, {
     workchain: Workchain.Basic,
     startUtime: new Date('2022-12-01T00:00:00Z'),
     endUtime: new Date('2022-12-02T00:00:00Z'),
     includeMsgBody: true,
   },
-});
+);
 
 for (const transaction of transactions) {
   console.log(

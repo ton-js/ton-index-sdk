@@ -8,12 +8,11 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const result = await getActiveAccountsCountInPeriod({
-  client,
-  params: {
+const result = await getActiveAccountsCountInPeriod(
+  client, {
     startUtime: new Date('2022-12-01T00:00:00Z'),
     endUtime: new Date('2022-12-02T00:00:00Z'),
-  },
-});
+  }
+);
 
 console.log(`Count: ${result.count}`);

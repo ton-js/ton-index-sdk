@@ -9,14 +9,13 @@ const client = new TonIndexClient({
 });
 
 const transaction = (
-  await getDestinationTransactionByMessage({
-    client,
-    params: {
+  await getDestinationTransactionByMessage(
+    client, {
       source: 'EQAW3kwQZi6ZkMfgHNvm32bVyOAWubkIdnp8Obah1_bHP32R',
       destination: 'EQDY5UG4nGQ6l6nuNcaxoHdn9SHOukpp_4Andlj1uASJvh0h',
       msgLt: 33479339000002,
     },
-  })
+  )
 );
 
 console.log(

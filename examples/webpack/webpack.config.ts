@@ -28,6 +28,7 @@ const config: Configuration = {
       },
     ],
   },
+  externals: [],
   experiments: {
     topLevelAwait: true,
   },

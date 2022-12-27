@@ -35,12 +35,11 @@ function App() {
         Date.now() - dayDurationMs
       );
 
-      const result = await getActiveAccountsCountInPeriod({
-        client: indexClient,
-        params: {
+      const result = await getActiveAccountsCountInPeriod(
+        indexClient, {
           startUtime: yesterday,
         },
-      });
+      );
 
       setCount(result.count);
 

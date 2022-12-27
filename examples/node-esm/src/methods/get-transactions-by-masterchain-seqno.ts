@@ -9,13 +9,12 @@ const client = new TonIndexClient({
 });
 
 const transactions = (
-  await getTransactionsByMasterchainSeqno({
-    client,
-    params: {
+  await getTransactionsByMasterchainSeqno(
+    client, {
       seqno: 2,
       includeMsgBody: true,
     },
-  })
+  )
 );
 
 for (const transaction of transactions) {

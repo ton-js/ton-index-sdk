@@ -1,11 +1,13 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { MessageResponse } from '../model/message.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { Message, parseMessageResponse } from '../model/message.js';
 import { serializeHash } from '../common/hash.js';
+
+import type { GetInMessageByTxID as NS } from './get-in-message-by-tx-id.js';
 
 
 export namespace GetInMessageByTxID {
@@ -35,36 +37,29 @@ export namespace GetInMessageByTxID {
 
   export type Result = Message;
 
-  export const definition: MethodDefinition<
-    Params,
-    Response,
-    Result
-  > = {
-
-    url: 'getInMessageByTxID',
-
-    deserializeResponse: parseMessageResponse,
-
-    serializeParams: params => ({
-      ...params,
-      txHash: serializeHash(params.txHash),
-    }),
-
-  };
-
 }
+
 
 /**
  * Gets incoming message by the specified transaction.
  */
-export function getInMessageByTxID(
-  options: ApiMethodArgs<GetInMessageByTxID.Params>
+export async function getInMessageByTxID(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetInMessageByTxID.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetInMessageByTxID.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getInMessageByTxID',
+    params,
+    deserializeResponse: parseMessageResponse,
+    serializeParams: params => ({
+      ...params,
+      txHash: serializeHash(params.txHash),
+    }),
+    options,
+  });
 
 }

@@ -8,13 +8,12 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const transaction = await getTransactionByHash({
-  client,
-  params: {
+const transaction = await getTransactionByHash(
+  client, {
     txHash: 'TXtxC7yTpoGC05qcMeaXhwEL696DZkPLIi8WEMwjm48=',
     includeMsgBody: true,
   },
-});
+);
 
 if (transaction) {
   console.log(

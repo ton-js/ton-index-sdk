@@ -1,10 +1,12 @@
 
 import type { AnyTime } from '../common/timestamp.js';
 import type { RequestParams } from '../common/request-params.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request.js';
 import { maybeNormalizeTimestamp, normalizeTimestamp } from '../common/timestamp.js';
+
+import type { GetActiveAccountsCountInPeriod as NS } from './get-active-accounts-count-in-period.js';
 
 
 export namespace GetActiveAccountsCountInPeriod {
@@ -28,37 +30,37 @@ export namespace GetActiveAccountsCountInPeriod {
     count: number;
   }
 
-  export type Result = Response;
+  export interface Result {
+    count: number;
+  }
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
+}
 
+
+
+/**
+ * Gets active accounts count in the specified time period.
+ */
+export async function getActiveAccountsCountInPeriod(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
+
+): Promise<NS.Result> {
+
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
     url: 'getActiveAccountsCountInPeriod',
-
+    params,
     serializeParams: params => ({
       ...params,
       startUtime: normalizeTimestamp(params.startUtime),
       endUtime: maybeNormalizeTimestamp(params.endUtime),
     }),
-
     deserializeResponse: response => ({
       count: response.count,
     }),
-
-  };
-
-}
-
-/**
- * Gets active accounts count in the specified time period.
- */
-export function getActiveAccountsCountInPeriod(
-  options: ApiMethodArgs<GetActiveAccountsCountInPeriod.Params>
-
-): Promise<GetActiveAccountsCountInPeriod.Result> {
-
-  return options.client.request(
-    GetActiveAccountsCountInPeriod.definition,
-    options
-  );
+    options,
+  });
 
 }

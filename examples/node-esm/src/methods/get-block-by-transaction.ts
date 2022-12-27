@@ -8,11 +8,10 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const block = await getBlockByTransaction({
-  client,
-  params: {
+const block = await getBlockByTransaction(
+  client, {
     txHash: 'TXtxC7yTpoGC05qcMeaXhwEL696DZkPLIi8WEMwjm48=',
   },
-});
+);
 
 console.log(`${block.seqno} ${block.genUtime.toISOString()}`);

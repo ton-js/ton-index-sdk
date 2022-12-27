@@ -1,6 +1,4 @@
 
-import BN from 'bn.js';
-
 import type { Maybe } from '../types/maybe.js';
 
 
@@ -82,17 +80,17 @@ export class Message {
   /**
    * Value.
    */
-  public value: BN;
+  public value: bigint;
 
   /**
    * Fwd Fee.
    */
-  public fwdFee: BN;
+  public fwdFee: bigint;
 
   /**
    * Ihr Fee.
    */
-  public ihrFee: BN;
+  public ihrFee: bigint;
 
   /**
    * Created Lt.
@@ -129,9 +127,9 @@ export class Message {
 
     this.source = response.source;
     this.destination = response.destination;
-    this.value = new BN(response.value);
-    this.fwdFee = new BN(response.fwd_fee);
-    this.ihrFee = new BN(response.ihr_fee);
+    this.value = BigInt(response.value);
+    this.fwdFee = BigInt(response.fwd_fee);
+    this.ihrFee = BigInt(response.ihr_fee);
     this.createdLt = response.created_lt;
     this.op = response.op;
     this.comment = response.comment;

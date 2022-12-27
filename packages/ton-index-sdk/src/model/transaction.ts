@@ -1,8 +1,7 @@
 
-import BN from 'bn.js';
-
 import type { Maybe } from '../types/maybe.js';
-import { MaybeBN, maybeBN } from '../common/bn.js';
+import type { MaybeBigInt } from '../common/bigint';
+import { maybeBigInt } from '../common/bigint';
 import { Message, MessageResponse } from './message.js';
 
 
@@ -136,17 +135,17 @@ export class Transaction {
   /**
    * Fee.
    */
-  public fee: BN;
+  public fee: bigint;
 
   /**
    * Storage Fee.
    */
-  public storageFee: BN;
+  public storageFee: bigint;
 
   /**
    * Other Fee.
    */
-  public otherFee: BN;
+  public otherFee: bigint;
 
   /**
    * Transaction Type.
@@ -166,22 +165,22 @@ export class Transaction {
   /**
    * Compute Gas Used.
    */
-  public computeGasUsed?: MaybeBN;
+  public computeGasUsed?: MaybeBigInt;
 
   /**
    * Compute Gas Limit.
    */
-  public computeGasLimit?: MaybeBN;
+  public computeGasLimit?: MaybeBigInt;
 
   /**
    * Compute Gas Credit.
    */
-  public computeGasCredit?: MaybeBN;
+  public computeGasCredit?: MaybeBigInt;
 
   /**
    * Compute Gas Fees.
    */
-  public computeGasFees?: MaybeBN;
+  public computeGasFees?: MaybeBigInt;
 
   /**
    * Compute Vm Steps.
@@ -196,12 +195,12 @@ export class Transaction {
   /**
    * Action Total Fwd Fees.
    */
-  public actionTotalFwdFees?: MaybeBN;
+  public actionTotalFwdFees?: MaybeBigInt;
 
   /**
    * Action Total Action Fees.
    */
-  public actionTotalActionFees?: MaybeBN;
+  public actionTotalActionFees?: MaybeBigInt;
 
   public inMsg?: Maybe<Message>;
 
@@ -217,20 +216,20 @@ export class Transaction {
     this.lt = response.lt;
     this.hash = response.hash;
     this.utime = new Date(response.utime * 1_000);
-    this.fee = new BN(response.fee);
-    this.storageFee = new BN(response.storage_fee);
-    this.otherFee = new BN(response.other_fee);
+    this.fee = BigInt(response.fee);
+    this.storageFee = BigInt(response.storage_fee);
+    this.otherFee = BigInt(response.other_fee);
     this.transactionType = response.transaction_type;
     this.computeSkipReason = response.compute_skip_reason;
     this.computeExitCode = response.compute_exit_code;
-    this.computeGasUsed = maybeBN(response.compute_gas_used);
-    this.computeGasLimit = maybeBN(response.compute_gas_limit);
-    this.computeGasCredit = maybeBN(response.compute_gas_credit);
-    this.computeGasFees = maybeBN(response.compute_gas_fees);
+    this.computeGasUsed = maybeBigInt(response.compute_gas_used);
+    this.computeGasLimit = maybeBigInt(response.compute_gas_limit);
+    this.computeGasCredit = maybeBigInt(response.compute_gas_credit);
+    this.computeGasFees = maybeBigInt(response.compute_gas_fees);
     this.computeVmSteps = response.compute_vm_steps;
     this.actionResultCode = response.action_result_code;
-    this.actionTotalFwdFees = maybeBN(response.action_total_fwd_fees);
-    this.actionTotalActionFees = maybeBN(response.action_total_action_fees);
+    this.actionTotalFwdFees = maybeBigInt(response.action_total_fwd_fees);
+    this.actionTotalActionFees = maybeBigInt(response.action_total_action_fees);
 
     this.inMsg = (response.in_msg
       ? new Message(response.in_msg)

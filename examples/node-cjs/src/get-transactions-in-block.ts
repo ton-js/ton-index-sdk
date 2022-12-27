@@ -17,14 +17,13 @@ const {
   });
 
   const transactions = (
-    await getTransactionsInBlock({
-      client,
-      params: {
+    await getTransactionsInBlock(
+      client, {
         workchain: Workchain.Basic,
         shard: '-9223372036854775808',
         seqno: 31160690,
       },
-    })
+    )
   );
 
   for (const transaction of transactions) {

@@ -14,16 +14,15 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const blocks = await getBlocksByUnixTime({
-  client,
-  params: {
+const blocks = await getBlocksByUnixTime(
+  client, {
     startUtime: new Date('2022-12-08T00:00:00Z'),
     endUtime: new Date('2022-12-08T12:00:00Z'),
     workchain: Workchain.Basic,
     limit: 100,
     sort: SortDirection.ASC,
   },
-});
+);
 
 let prevBlockTime: (Date | undefined);
 

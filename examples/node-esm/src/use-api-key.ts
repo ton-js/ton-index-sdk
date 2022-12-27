@@ -20,14 +20,13 @@ const client = new TonIndexClient({
 
 console.log(`The latest block is:`);
 
-const blocks = await getBlocksByUnixTime({
-  client,
-  params: {
+const blocks = await getBlocksByUnixTime(
+  client, {
     workchain: Workchain.Basic,
     limit: 1,
     sort: SortDirection.DESC,
   },
-});
+);
 
 assert(blocks.length === 1 && blocks[0]);
 
@@ -35,14 +34,13 @@ const block = blocks[0];
 
 console.log(`${block.seqno} ${block.genUtime.toISOString()}`);
 
-const transactions = await getTransactionsInBlock({
-  client,
-  params: {
+const transactions = await getTransactionsInBlock(
+  client, {
     workchain: block.workchain,
     shard: block.shard,
     seqno: block.seqno,
   },
-});
+);
 
 console.log(
   `Number of transactions in the latest block: ` +

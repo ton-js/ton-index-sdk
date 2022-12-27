@@ -20,6 +20,7 @@ const result = await build({
   metafile: true,
   sourcemap: 'linked',
   minify: true,
+  external: [],
 
 }).catch(error => {
   console.error(error);

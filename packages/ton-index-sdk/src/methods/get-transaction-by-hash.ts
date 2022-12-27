@@ -1,12 +1,15 @@
 
 import type { TransactionResponse } from '../model/transaction.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
 import type { RequestParams } from '../common/request-params.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
 import type { Transaction } from '../model/transaction.js';
+import type { ExtraRequestOptions } from './common/make-request';
+import { makeRequest } from './common/make-request';
 import { parseTransactionResponse } from '../model/transaction.js';
 import { serializeHash } from '../common/hash.js';
+
+import type { GetTransactionByHash as NS } from './get-transaction-by-hash.js';
 
 
 export namespace GetTransactionByHash {
@@ -31,15 +34,27 @@ export namespace GetTransactionByHash {
 
   export type Result = Maybe<Transaction>;
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
+}
 
+
+/**
+ * Gets transaction by the specified hash.
+ */
+export async function getTransactionByHash(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
+
+): Promise<NS.Result> {
+
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
     url: 'getTransactionByHash',
-
+    params,
     serializeParams: params => ({
       ...params,
       txHash: serializeHash(params.txHash),
     }),
-
     deserializeResponse: response => {
 
       /**
@@ -62,22 +77,7 @@ export namespace GetTransactionByHash {
       );
 
     },
-
-  };
-
-}
-
-/**
- * Gets transaction by the specified hash.
- */
-export function getTransactionByHash(
-  options: ApiMethodArgs<GetTransactionByHash.Params>
-
-): Promise<GetTransactionByHash.Result> {
-
-  return options.client.request(
-    GetTransactionByHash.definition,
-    options
-  );
+    options,
+  });
 
 }

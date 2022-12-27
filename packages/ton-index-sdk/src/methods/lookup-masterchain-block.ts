@@ -2,10 +2,14 @@
 import type { RequestParams } from '../common/request-params.js';
 import type { WorkchainType } from '../common/workchain.js';
 import type { BlockResponse } from '../model/block.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
+import type { Maybe } from '../types/maybe';
 import type { Block } from '../model/block.js';
+import type { ExtraRequestOptions } from './common/make-request';
+import { makeRequest } from './common/make-request';
 import { parseBlockResponse } from '../model/block.js';
+
+import type { LookupMasterchainBlock as NS } from './lookup-masterchain-block.js';
 
 
 export namespace LookupMasterchainBlock {
@@ -34,27 +38,25 @@ export namespace LookupMasterchainBlock {
 
   export type Result = Block;
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'lookupMasterchainBlock',
-
-    deserializeResponse: parseBlockResponse,
-
-  };
-
 }
+
 
 /**
  * Gets corresponding masterchain block by a shardchain one.
  */
-export function lookupMasterchainBlock(
-  options: ApiMethodArgs<LookupMasterchainBlock.Params>
+export async function lookupMasterchainBlock(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<LookupMasterchainBlock.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    LookupMasterchainBlock.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'lookupMasterchainBlock',
+    params,
+    deserializeResponse: parseBlockResponse,
+    options,
+  });
 
 }

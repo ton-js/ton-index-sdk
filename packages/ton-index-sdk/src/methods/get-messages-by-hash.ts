@@ -1,12 +1,14 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { MessageResponse } from '../model/message.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
 import type { Message } from '../model/message.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { parseMessageListResponse } from '../model/message.js';
 import { serializeHash } from '../common/hash.js';
+
+import type { GetMessagesByHash as NS } from './get-messages-by-hash.js';
 
 
 export namespace GetMessagesByHash {
@@ -31,36 +33,29 @@ export namespace GetMessagesByHash {
 
   export type Result = Message[];
 
-  export const definition: MethodDefinition<
-    Params,
-    Response,
-    Result
-  > = {
-
-    url: 'getMessageByHash',
-
-    deserializeResponse: parseMessageListResponse,
-
-    serializeParams: params => ({
-      ...params,
-      msgHash: serializeHash(params.msgHash),
-    }),
-
-  };
-
 }
+
 
 /**
  * Gets messages by the specified hash.
  */
-export function getMessagesByHash(
-  options: ApiMethodArgs<GetMessagesByHash.Params>
+export async function getMessagesByHash(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetMessagesByHash.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetMessagesByHash.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getMessageByHash',
+    params,
+    deserializeResponse: parseMessageListResponse,
+    serializeParams: params => ({
+      ...params,
+      msgHash: serializeHash(params.msgHash),
+    }),
+    options,
+  });
 
 }

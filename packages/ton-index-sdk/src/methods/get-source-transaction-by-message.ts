@@ -1,10 +1,14 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { TransactionResponse } from '../model/transaction.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
+import type { Maybe } from '../types/maybe';
+import type { ExtraRequestOptions } from './common/make-request';
 import type { Transaction } from '../model/transaction.js';
+import { makeRequest } from './common/make-request';
 import { parseTransactionResponse } from '../model/transaction.js';
+
+import type { GetSourceTransactionByMessage as NS } from './get-source-transaction-by-message.js';
 
 
 export namespace GetSourceTransactionByMessage {
@@ -32,28 +36,26 @@ export namespace GetSourceTransactionByMessage {
 
   export type Result = Transaction;
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'getSourceTransactionByMessage',
-
-    deserializeResponse: parseTransactionResponse,
-
-  };
-
 }
+
 
 /**
  * Gets transaction of source address by incoming message
  * on the destination address.
  */
-export function getSourceTransactionByMessage(
-  options: ApiMethodArgs<GetSourceTransactionByMessage.Params>
+export async function getSourceTransactionByMessage(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetSourceTransactionByMessage.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetSourceTransactionByMessage.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getSourceTransactionByMessage',
+    params,
+    deserializeResponse: parseTransactionResponse,
+    options,
+  });
 
 }

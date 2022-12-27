@@ -58,10 +58,6 @@ export { Transaction } from './model/transaction.js';
 // API METHODS //
 //=============//
 
-// Commons
-export type { MethodDefinition } from './methods/common/method-definition.js';
-export type { ApiMethodArgs } from './methods/common/api-method-args.js';
-
 export type { GetActiveAccountsCountInPeriod } from './methods/get-active-accounts-count-in-period.js';
 export { getActiveAccountsCountInPeriod } from './methods/get-active-accounts-count-in-period.js';
 
@@ -122,11 +118,6 @@ export type { SortDirectionType } from './common/sort.js';
 export { SortDirection } from './common/sort.js';
 
 export type { AnyTime } from './common/timestamp.js';
-
-export type { AnyBN, MaybeAnyBN, MaybeBN } from './common/bn.js';
-
-import BN from 'bn.js';
-export { BN };
 
 export type { NetworkType } from './common/network.js';
 export { Network } from './common/network.js';

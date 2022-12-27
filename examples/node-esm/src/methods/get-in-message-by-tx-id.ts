@@ -8,12 +8,11 @@ const client = new TonIndexClient({
   httpClient: fetchHttpClient,
 });
 
-const message = await getInMessageByTxID({
-  client,
-  params: {
+const message = await getInMessageByTxID(
+  client, {
     txLt: 33479339000001,
     txHash: 'TXtxC7yTpoGC05qcMeaXhwEL696DZkPLIi8WEMwjm48=',
   },
-});
+);
 
 console.log(`${message.hash}`);

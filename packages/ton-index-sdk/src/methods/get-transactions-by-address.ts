@@ -1,14 +1,17 @@
 
 import type { RequestParams } from '../common/request-params.js';
 import type { TransactionResponse } from '../model/transaction.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
 import type { SortDirection, SortDirectionType } from '../common/sort.js';
 import type { Transaction } from '../model/transaction.js';
 import type { AnyTime } from '../common/timestamp.js';
+import type { ExtraRequestOptions } from './common/make-request';
+import { makeRequest } from './common/make-request';
 import { parseTransactionsListResponse } from '../model/transaction.js';
 import { maybeNormalizeTimestamp } from '../common/timestamp.js';
+
+import type { GetTransactionsByAddress as NS } from './get-transactions-by-address.js';
 
 
 export namespace GetTransactionsByAddress {
@@ -68,33 +71,30 @@ export namespace GetTransactionsByAddress {
 
   export type Result = Transaction[];
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
+}
 
+
+/**
+ * Gets transactions for the specified account address.
+ */
+export async function getTransactionsByAddress(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
+
+): Promise<NS.Result> {
+
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
     url: 'getTransactionsByAddress',
-
+    params,
     serializeParams: params => ({
       ...params,
       startUtime: maybeNormalizeTimestamp(params.startUtime),
       endUtime: maybeNormalizeTimestamp(params.endUtime),
     }),
-
     deserializeResponse: parseTransactionsListResponse,
-
-  };
-
-}
-
-/**
- * Gets transactions for the specified account address.
- */
-export function getTransactionsByAddress(
-  options: ApiMethodArgs<GetTransactionsByAddress.Params>
-
-): Promise<GetTransactionsByAddress.Result> {
-
-  return options.client.request(
-    GetTransactionsByAddress.definition,
-    options
-  );
+    options,
+  });
 
 }

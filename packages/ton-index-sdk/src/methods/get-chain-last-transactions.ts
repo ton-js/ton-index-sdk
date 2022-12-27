@@ -3,11 +3,13 @@ import type { AnyTime } from '../common/timestamp.js';
 import type { TransactionResponse } from '../model/transaction.js';
 import type { RequestParams } from '../common/request-params.js';
 import type { WorkchainType } from '../common/workchain.js';
+import type { TonIndexClient } from '../ton-index-client/ton-index-client';
 import type { Maybe } from '../types/maybe.js';
-import type { ApiMethodArgs } from './common/api-method-args.js';
-import type { MethodDefinition } from './common/method-definition.js';
+import { ExtraRequestOptions, makeRequest } from './common/make-request';
 import { maybeNormalizeTimestamp } from '../common/timestamp.js';
 import { parseTransactionsListResponse, Transaction } from '../model/transaction.js';
+
+import type { GetChainLastTransactions as NS } from './get-chain-last-transactions.js';
 
 
 export namespace GetChainLastTransactions {
@@ -59,34 +61,31 @@ export namespace GetChainLastTransactions {
 
   export type Result = Transaction[];
 
-  export const definition: MethodDefinition<Params, Response, Result> = {
-
-    url: 'getChainLastTransactions',
-
-    serializeParams: params => ({
-      ...params,
-      startUtime: maybeNormalizeTimestamp(params.startUtime),
-      endUtime: maybeNormalizeTimestamp(params.endUtime),
-    }),
-
-    deserializeResponse: parseTransactionsListResponse,
-
-  };
-
 }
+
 
 /**
  * Gets the latest transactions of the specified workchain.
  * Response is sorted descending by transaction's timestamp.
  */
-export function getChainLastTransactions(
-  options: ApiMethodArgs<GetChainLastTransactions.Params>
+export async function getChainLastTransactions(
+  client: TonIndexClient,
+  params: NS.Params,
+  options?: Maybe<ExtraRequestOptions>
 
-): Promise<GetChainLastTransactions.Result> {
+): Promise<NS.Result> {
 
-  return options.client.request(
-    GetChainLastTransactions.definition,
-    options
-  );
+  return makeRequest<NS.Params, NS.Response, NS.Result>({
+    client,
+    url: 'getChainLastTransactions',
+    params,
+    serializeParams: params => ({
+      ...params,
+      startUtime: maybeNormalizeTimestamp(params.startUtime),
+      endUtime: maybeNormalizeTimestamp(params.endUtime),
+    }),
+    deserializeResponse: parseTransactionsListResponse,
+    options,
+  });
 
 }
